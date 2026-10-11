@@ -33,9 +33,9 @@ export const SearchModal: React.FC = () => {
       />
 
       <div className="flex min-h-full items-start justify-center p-4 sm:p-6 text-center pt-16 sm:pt-24">
-        <div className="relative transform overflow-hidden rounded-2xl bg-[#FFFFFF] text-left shadow-dew-deep transition-all w-full max-w-2xl border-2 border-[#0E3B2F]">
+        <div className="relative transform overflow-hidden rounded-3xl bg-white/95 backdrop-blur-2xl text-left shadow-dew-deep transition-all w-full max-w-2xl border-2 border-white/90">
           {/* Header Input */}
-          <div className="p-4 sm:p-6 border-b border-[#0D1F2D]/10 flex items-center space-x-3 bg-[#E3F2F7]">
+          <div className="p-4 sm:p-6 border-b border-white/60 flex items-center space-x-3 bg-white/60">
             <Search size={22} className="text-[#0E3B2F] shrink-0" />
             <input
               type="text"

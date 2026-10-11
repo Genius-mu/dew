@@ -68,9 +68,9 @@ export const CartDrawer: React.FC = () => {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#FFFFFF] shadow-dew-deep flex flex-col justify-between border-l border-[#0D1F2D]/10">
+        <div className="w-screen max-w-md bg-white/90 backdrop-blur-2xl shadow-dew-deep flex flex-col justify-between border-l border-white/80">
           {/* Header */}
-          <div className="px-6 py-5 border-b border-[#0D1F2D]/10 flex items-center justify-between bg-[#FFFFFF]">
+          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/50">
             <div className="flex items-center space-x-2">
               <ShoppingBag size={20} className="text-[#0E3B2F]" />
               <h2 className="text-base font-extrabold uppercase tracking-wider text-[#0D1F2D]">

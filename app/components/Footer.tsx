@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { DewLogo } from './DewLogo';
-import { ArrowRight, CheckCircle2, Mail, MapPin, Phone, Globe } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Mail, MapPin, Phone } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -21,18 +21,18 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#0E3B2F] text-[#FFFFFF] pt-20 pb-12 border-t border-[#FFFFFF]/10">
+    <footer className="w-full glass-dark text-[#FFFFFF] pt-20 pb-12 border-t border-white/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#FFFFFF]/15">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/20">
           {/* Brand Column with Standalone Dew Logo Mark */}
           <div className="md:col-span-4">
             <div className="flex items-center space-x-3 mb-6">
               <DewLogo size={42} color="#FFFFFF" />
             </div>
-            <p className="text-sm text-[#FFFFFF]/80 leading-relaxed max-w-sm mb-6">
+            <p className="text-xs sm:text-sm text-[#FFFFFF]/85 leading-relaxed max-w-sm mb-6">
               Thoughtful botanical skincare formulas for your everyday ritual. Clean hydration, barrier protection, and genuine skin comfort crafted for modern living.
             </p>
-            <div className="space-y-2 text-xs text-[#FFFFFF]/70">
+            <div className="space-y-2 text-xs text-[#FFFFFF]/75">
               <div className="flex items-center space-x-2">
                 <MapPin size={14} className="text-[#FDE89D]" />
                 <span>Victoria Island, Lagos, Nigeria</span>
@@ -121,13 +121,13 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#FDE89D] mb-2">
               Join the Ritual
             </h4>
-            <p className="text-xs text-[#FFFFFF]/75 mb-4 leading-relaxed">
+            <p className="text-xs text-[#FFFFFF]/80 mb-4 leading-relaxed">
               Receive 10% off your first ritual order (code: <strong>DEW10</strong>) plus seasonal skincare advice tailored to tropical climates.
             </p>
 
             {subscribed ? (
-              <div className="p-4 bg-[#FFFFFF]/10 rounded-lg border border-[#FFFFFF]/20 flex items-center space-x-3 text-xs text-[#FFFFFF]">
-                <CheckCircle2 size={20} className="text-[#FDE89D] shrink-0" />
+              <div className="p-4 bg-white/10 rounded-xl border border-white/20 flex items-center space-x-3 text-xs text-[#FFFFFF]">
+                <CheckCircle2 size={18} className="text-[#FDE89D] shrink-0" />
                 <span>You’re on the list! Use code <strong>DEW10</strong> at checkout.</span>
               </div>
             ) : (
@@ -138,11 +138,11 @@ export const Footer: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 bg-[#FFFFFF] text-[#0D1F2D] text-xs font-medium rounded-l focus:outline-none placeholder:text-[#0D1F2D]/50"
+                    className="flex-1 px-4 py-3 bg-white/90 text-[#0D1F2D] text-xs font-medium rounded-l-full focus:outline-none placeholder:text-[#0D1F2D]/50"
                   />
                   <button
                     type="submit"
-                    className="px-5 py-3 bg-[#FF6B35] hover:bg-[#F95721] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-r flex items-center transition-colors"
+                    className="px-5 py-3 bg-[#FF6B35] hover:bg-[#F95721] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-r-full flex items-center transition-colors"
                     aria-label="Subscribe to newsletter"
                   >
                     <ArrowRight size={16} />
@@ -157,7 +157,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 bg-[#FFFFFF]/10 hover:bg-[#FFFFFF]/20 rounded-full transition-colors text-[#FFFFFF]"
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-[#FFFFFF]"
                 aria-label="Instagram"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -170,7 +170,7 @@ export const Footer: React.FC = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 bg-[#FFFFFF]/10 hover:bg-[#FFFFFF]/20 rounded-full transition-colors text-[#FFFFFF]"
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-[#FFFFFF]"
                 aria-label="Twitter"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

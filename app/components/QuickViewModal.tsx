@@ -30,7 +30,7 @@ export const QuickViewModal: React.FC = () => {
       />
 
       <div className="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
-        <div className="relative transform overflow-hidden rounded-2xl bg-[#FFFFFF] text-left shadow-dew-deep transition-all sm:my-8 w-full max-w-3xl border-2 border-[#0E3B2F]">
+        <div className="relative transform overflow-hidden rounded-3xl bg-white/95 backdrop-blur-2xl text-left shadow-dew-deep transition-all sm:my-8 w-full max-w-3xl border-2 border-white/90">
           {/* Close button */}
           <button
             type="button"
