@@ -30,53 +30,105 @@ html {
 }
 
 body {
-  background-color: #FFFFFF;
   color: #0D1F2D;
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
-/* Natural solid shadows (no frosted or blurred glowing effects) */
-.shadow-dew-subtle {
+/* Fixed full-viewport continuous cloud sky background from beginning to end */
+.sky-fixed-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background-image: url('/Serene Cloud-Framed Blue Sky.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Ultra-premium Glassmorphic System */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px 0 rgba(13, 31, 45, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(13, 31, 45, 0.07);
+}
+
+.glass-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 16px 40px rgba(13, 31, 45, 0.12);
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(13, 31, 45, 0.08);
+}
+
+.glass-dark {
+  background: rgba(14, 59, 47, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.glass-badge {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(13, 31, 45, 0.06);
 }
 
-.shadow-dew-card {
-  box-shadow: 0 4px 16px rgba(13, 31, 45, 0.08);
+/* Subtle shadows */
+.shadow-dew-subtle {
+  box-shadow: 0 4px 12px rgba(13, 31, 45, 0.06);
 }
 
-.shadow-dew-floating {
-  box-shadow: 0 12px 32px rgba(13, 31, 45, 0.12);
+.shadow-dew-card {
+  box-shadow: 0 8px 28px rgba(13, 31, 45, 0.08);
 }
 
 .shadow-dew-deep {
-  box-shadow: 0 20px 48px rgba(13, 31, 45, 0.16);
+  box-shadow: 0 20px 48px rgba(13, 31, 45, 0.14);
 }
 
-/* Custom crisp solid borders */
-.border-dew-subtle {
-  border: 1px solid rgba(13, 31, 45, 0.1);
-}
-
-.border-dew-forest {
-  border: 1px solid #0E3B2F;
-}
-
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #E3F2F7;
+  background: rgba(255, 255, 255, 0.3);
 }
 ::-webkit-scrollbar-thumb {
-  background: #0E3B2F;
+  background: rgba(14, 59, 47, 0.6);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B35;
+  background: rgba(14, 59, 47, 0.9);
 }
 
 /* Animation utilities */

@@ -45,7 +45,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${plusJakarta.variable} ${cormorant.variable}`}>
-      <body className="min-h-screen bg-[#FFFFFF] text-[#0D1F2D] antialiased selection:bg-[#FDE89D] selection:text-[#0E3B2F]">
+      <body className="min-h-screen text-[#0D1F2D] antialiased selection:bg-[#FFFFFF] selection:text-[#0E3B2F] relative">
+        {/* Continuous Cloud-Framed Blue Sky fixed background from beginning to end */}
+        <div className="sky-fixed-bg" aria-hidden="true" />
         <CartProvider>
           {children}
         </CartProvider>
