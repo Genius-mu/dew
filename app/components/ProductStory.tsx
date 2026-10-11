@@ -256,7 +256,7 @@ export const ProductStory: React.FC = () => {
           <button
             type="button"
             onClick={handleAdd}
-            className="flex items-center space-x-2 px-6 py-2.5 bg-[#0E3B2F] hover:bg-[#0A2E24] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-full shadow-dew-subtle active:scale-95 transition-all"
+            className="flex items-center space-x-2 px-6 py-2.5 bg-[#0E3B2F] hover:bg-[#0A2E24] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-full shadow-dew-subtle active:scale-95 transition-all hover-scale-pill"
           >
             {added ? (
               <>
@@ -273,7 +273,7 @@ export const ProductStory: React.FC = () => {
           <button
             type="button"
             onClick={() => openQuickView(serumProduct)}
-            className="px-4 py-2.5 glass-pill hover:bg-white/90 text-[#0D1F2D] text-xs font-bold uppercase tracking-wider rounded-full shadow-sm transition-all"
+            className="px-4 py-2.5 glass-pill hover:bg-white/90 text-[#0D1F2D] text-xs font-bold uppercase tracking-wider rounded-full shadow-sm transition-all hover-scale-pill"
           >
             Details
           </button>

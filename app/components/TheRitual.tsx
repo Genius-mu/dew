@@ -193,7 +193,7 @@ export const TheRitual: React.FC = () => {
             <button
               type="button"
               onClick={handleAddBundle}
-              className="px-8 py-3.5 bg-[#FFFFFF] hover:bg-[#FDE89D] text-[#0E3B2F] text-xs font-extrabold uppercase tracking-wider rounded-full active:scale-95 transition-all shadow-dew-card flex items-center space-x-2"
+              className="px-8 py-3.5 bg-[#FFFFFF] hover:bg-[#FDE89D] text-[#0E3B2F] text-xs font-extrabold uppercase tracking-wider rounded-full active:scale-95 transition-all shadow-dew-card flex items-center space-x-2 hover-scale-pill"
             >
               {bundleAdded ? (
                 <>

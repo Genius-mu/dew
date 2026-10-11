@@ -14,7 +14,7 @@ import { ToastNotification } from './components/ToastNotification';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#FFFFFF] selection:bg-[#FDE89D] selection:text-[#0E3B2F]">
+    <main className="relative min-h-screen bg-transparent selection:bg-[#FDE89D] selection:text-[#0E3B2F]">
       {/* Polished Editorial Navigation (Inspired by Supaste) */}
       <Navbar />
 

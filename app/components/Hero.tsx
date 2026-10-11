@@ -148,14 +148,14 @@ export const Hero: React.FC = () => {
             <button
               type="button"
               onClick={() => scrollToSection('featured-products')}
-              className="px-7 py-3.5 bg-[#0E3B2F] text-[#FFFFFF] text-xs font-extrabold tracking-wider uppercase rounded-full hover:bg-[#0A2E24] active:scale-95 transition-all shadow-dew-card"
+              className="px-7 py-3.5 bg-[#0E3B2F] text-[#FFFFFF] text-xs font-extrabold tracking-wider uppercase rounded-full hover:bg-[#0A2E24] active:scale-95 transition-all shadow-dew-card hover-scale-pill"
             >
               Shop the essentials
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('the-ritual')}
-              className="px-7 py-3.5 glass-panel text-[#0D1F2D] text-xs font-extrabold tracking-wider uppercase rounded-full hover:bg-white/80 active:scale-95 transition-all shadow-dew-subtle"
+              className="px-7 py-3.5 glass-panel text-[#0D1F2D] text-xs font-extrabold tracking-wider uppercase rounded-full hover:bg-white/80 active:scale-95 transition-all shadow-dew-subtle hover-scale-pill"
             >
               Explore the ritual
             </button>
