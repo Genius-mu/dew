@@ -145,29 +145,29 @@ export const ProductStory: React.FC = () => {
     >
       <div
         ref={sceneRef}
-        className="relative max-w-7xl mx-auto w-full h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between py-16"
+        className="relative max-w-7xl mx-auto w-full h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-20 pb-4 sm:pt-22 sm:pb-6"
       >
         {/* Top Story Header with Glass Badge (NO icon) */}
-        <div ref={titleBlockRef} className="text-center max-w-2xl mx-auto z-10 pt-4">
-          <div className="inline-block px-4 py-1 glass-badge rounded-full mb-2">
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F]">
+        <div ref={titleBlockRef} className="text-center max-w-2xl mx-auto z-10 shrink-0">
+          <div className="inline-block px-3.5 py-1 glass-badge rounded-full mb-1">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#0E3B2F]">
               Signature Formula
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#0D1F2D] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#0D1F2D] tracking-tight">
             A Little More Hydration.
           </h2>
-          <p className="text-xs sm:text-sm text-[#0D1F2D]/80 font-medium mt-1">
+          <p className="text-[11px] sm:text-xs text-[#0D1F2D]/80 font-medium mt-1">
             Every drop is crafted to merge effortlessly with your skin’s natural lipid barrier.
           </p>
         </div>
 
         {/* Central 3D Interactive Choreography Stage */}
-        <div className="relative flex-1 w-full flex items-center justify-center min-h-[360px] sm:min-h-[440px]">
+        <div className="relative flex-1 w-full flex items-center justify-center my-auto min-h-[280px] sm:min-h-[340px]">
           {/* Front Angle Bottle Stage on Glass Card */}
           <div
             ref={bottleFrontRef}
-            className="absolute z-20 w-[220px] sm:w-[280px] md:w-[320px] aspect-[3/4] glass-card rounded-3xl p-4 shadow-dew-deep border-2 border-white/90"
+            className="absolute z-20 w-[170px] sm:w-[210px] md:w-[250px] aspect-[3/4] glass-card rounded-2xl sm:rounded-3xl p-3 shadow-dew-deep border-2 border-white/90"
             style={{ perspective: 1000 }}
           >
             <div className="relative w-full h-full">
@@ -176,7 +176,7 @@ export const ProductStory: React.FC = () => {
                 alt="Dew Hydrate Serum - Front View"
                 fill
                 className="object-contain drop-shadow-md"
-                sizes="(max-width: 768px) 280px, 340px"
+                sizes="(max-width: 768px) 220px, 280px"
               />
             </div>
           </div>
@@ -184,7 +184,7 @@ export const ProductStory: React.FC = () => {
           {/* 3/4 Perspective Angle Bottle Stage (Reveals in Phase 4) */}
           <div
             ref={bottleAngleRef}
-            className="absolute z-20 w-[220px] sm:w-[280px] md:w-[320px] aspect-[3/4] glass-card rounded-3xl p-4 shadow-dew-deep border-2 border-white/90 opacity-0"
+            className="absolute z-20 w-[170px] sm:w-[210px] md:w-[250px] aspect-[3/4] glass-card rounded-2xl sm:rounded-3xl p-3 shadow-dew-deep border-2 border-white/90 opacity-0"
             style={{ perspective: 1000 }}
           >
             <div className="relative w-full h-full">
@@ -193,7 +193,7 @@ export const ProductStory: React.FC = () => {
                 alt="Dew Hydrate Serum - 3/4 Angle Detail"
                 fill
                 className="object-contain drop-shadow-md"
-                sizes="(max-width: 768px) 280px, 340px"
+                sizes="(max-width: 768px) 220px, 280px"
               />
             </div>
           </div>
