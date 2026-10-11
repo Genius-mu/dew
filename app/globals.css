@@ -36,71 +36,83 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  background-color: transparent;
 }
 
-/* Fixed full-viewport continuous cloud sky background from beginning to end */
+/* Continuous cloud-framed sky background fixed from header to footer */
 .sky-fixed-bg {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   z-index: -10;
-  background-image: url('/Serene Cloud-Framed Blue Sky.png');
+  background-image: url('/sky-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   pointer-events: none;
 }
 
-/* Ultra-premium Glassmorphic System */
+/* Ultra-premium Glassmorphism System */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 8px 32px 0 rgba(13, 31, 45, 0.08);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 10px 30px rgba(13, 31, 45, 0.07);
-}
-
-.glass-card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-card-hover:hover {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 16px 40px rgba(13, 31, 45, 0.12);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(13, 31, 45, 0.08);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 24px rgba(13, 31, 45, 0.08);
 }
 
-.glass-dark {
-  background: rgba(14, 59, 47, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-}
-
 .glass-badge {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(13, 31, 45, 0.06);
+}
+
+.glass-footer {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 -10px 40px rgba(13, 31, 45, 0.06);
+}
+
+/* Subtle scaling on hover for interactive elements */
+.hover-scale-subtle {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+.hover-scale-subtle:hover {
+  transform: scale(1.025);
+}
+.hover-scale-subtle:active {
+  transform: scale(0.98);
+}
+
+.hover-scale-pill {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
+}
+.hover-scale-pill:hover {
+  transform: scale(1.04);
+}
+.hover-scale-pill:active {
+  transform: scale(0.96);
 }
 
 /* Subtle shadows */
@@ -116,19 +128,20 @@ body {
   box-shadow: 0 20px 48px rgba(13, 31, 45, 0.14);
 }
 
-/* Scrollbar */
+/* Scrollbar styling with blue hover */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(14, 59, 47, 0.6);
+  background: rgba(59, 157, 248, 0.55);
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(14, 59, 47, 0.9);
+  background: #3B9DF8; /* Vibrant Sky Blue on hover */
 }
 
 /* Animation utilities */

@@ -177,7 +177,7 @@ export const FeaturedProducts: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => openQuickView(prod)}
-                    className="absolute top-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm"
+                    className="absolute top-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm hover-scale-pill"
                     aria-label={`Quick view ${prod.name}`}
                   >
                     <Eye size={17} />
@@ -235,7 +235,7 @@ export const FeaturedProducts: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleAdd(prod)}
-                      className={`flex items-center space-x-2 px-6 py-3 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all shadow-dew-subtle ${
+                      className={`flex items-center space-x-2 px-6 py-3 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all shadow-dew-subtle hover-scale-pill ${
                         addedId === prod.id
                           ? 'bg-[#0E3B2F] text-[#FFFFFF]'
                           : 'bg-[#0E3B2F] hover:bg-[#0A2E24] text-[#FFFFFF] active:scale-95'
