@@ -20,6 +20,18 @@ export const CartDrawer: React.FC = () => {
 
   const [checkoutStep, setCheckoutStep] = useState<'cart' | 'checkout' | 'confirmation'>('cart');
 
+  const [formData, setFormData] = useState({
+    name: 'Adanna Okafor',
+    email: 'adanna@example.com',
+    phone: '+234 802 123 4567',
+    address: '14 Adeleke Adedoyin St',
+    city: 'Victoria Island',
+    state: 'Lagos',
+    paymentMethod: 'paystack',
+  });
+
+  if (!isOpen) return null;
+
   const handleCheckoutSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setCheckoutStep('confirmation');
@@ -367,21 +379,9 @@ export const CartDrawer: React.FC = () => {
                   <span>Subtotal</span>
                   <span className="font-bold text-[#0D1F2D]">₦{subtotal.toLocaleString()}</span>
                 </div>
-                {discount > 0 && (
-                  <div className="flex justify-between text-[#0E3B2F] font-bold">
-                    <span>Promo Discount ({discountPercent}%)</span>
-                    <span>-₦{discount.toLocaleString()}</span>
-                  </div>
-                )}
                 <div className="flex justify-between">
-                  <span>Estimated Delivery</span>
-                  <span>
-                    {subtotal >= freeShippingThreshold ? (
-                      <strong className="text-[#0E3B2F]">FREE</strong>
-                    ) : (
-                      'Calculated at checkout'
-                    )}
-                  </span>
+                  <span>Delivery</span>
+                  <span>Calculated at checkout</span>
                 </div>
                 <div className="flex justify-between text-base font-black text-[#0D1F2D] pt-2 border-t border-[#0D1F2D]/10">
                   <span>Total</span>
