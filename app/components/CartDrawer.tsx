@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useCart } from '../context/CartContext';
-import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, ShieldCheck, CheckCircle2, Tag } from 'lucide-react';
+import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -14,39 +14,11 @@ export const CartDrawer: React.FC = () => {
     removeFromCart,
     totalItems,
     subtotal,
-    discount,
-    discountPercent,
-    appliedPromo,
-    applyPromo,
     total,
-    freeShippingThreshold,
-    shippingProgress,
     clearCart,
   } = useCart();
 
-  const [promoInput, setPromoInput] = useState('');
-  const [promoMessage, setPromoMessage] = useState<{ text: string; success: boolean } | null>(null);
   const [checkoutStep, setCheckoutStep] = useState<'cart' | 'checkout' | 'confirmation'>('cart');
-
-  // Checkout form state
-  const [formData, setFormData] = useState({
-    name: 'Adanna Okafor',
-    email: 'adanna@example.com',
-    phone: '+234 802 123 4567',
-    address: '14 Adeleke Adedoyin St',
-    city: 'Victoria Island',
-    state: 'Lagos',
-    paymentMethod: 'paystack',
-  });
-
-  if (!isOpen) return null;
-
-  const handleApplyPromo = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!promoInput) return;
-    const res = applyPromo(promoInput);
-    setPromoMessage({ text: res.message, success: res.success });
-  };
 
   const handleCheckoutSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,23 +67,7 @@ export const CartDrawer: React.FC = () => {
           <div className="flex-1 overflow-y-auto px-6 py-6">
             {checkoutStep === 'cart' && (
               <>
-                {/* Free Shipping Progress Indicator */}
-                <div className="mb-6 p-4 bg-[#E3F2F7] rounded-xl border border-[#0D1F2D]/5">
-                  <div className="flex items-center justify-between text-xs font-bold text-[#0E3B2F] mb-2">
-                    <span>
-                      {subtotal >= freeShippingThreshold
-                        ? '🎉 You unlocked Free Delivery nationwide!'
-                        : `Add ₦${(freeShippingThreshold - subtotal).toLocaleString()} more for Free Delivery`}
-                    </span>
-                    <span>{shippingProgress}%</span>
-                  </div>
-                  <div className="w-full h-2 bg-[#FFFFFF] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[#0E3B2F] transition-all duration-300"
-                      style={{ width: `${shippingProgress}%` }}
-                    />
-                  </div>
-                </div>
+
 
                 {/* Items List */}
                 {items.length === 0 ? (
@@ -206,38 +162,7 @@ export const CartDrawer: React.FC = () => {
                   </div>
                 )}
 
-                {/* Promo Code Input */}
-                {items.length > 0 && (
-                  <div className="mt-6 pt-6 border-t border-[#0D1F2D]/10">
-                    <form onSubmit={handleApplyPromo} className="flex space-x-2">
-                      <div className="relative flex-1">
-                        <Tag size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#0D1F2D]/40" />
-                        <input
-                          type="text"
-                          value={promoInput}
-                          onChange={(e) => setPromoInput(e.target.value)}
-                          placeholder="Promo code (e.g. DEW10)"
-                          className="w-full pl-9 pr-3 py-2 bg-[#E3F2F7] text-xs font-bold uppercase rounded border border-[#0D1F2D]/10 focus:outline-none focus:ring-1 focus:ring-[#0E3B2F]"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        className="px-4 py-2 bg-[#0E3B2F] text-[#FFFFFF] text-xs font-bold uppercase rounded hover:bg-[#0A2E24]"
-                      >
-                        Apply
-                      </button>
-                    </form>
-                    {promoMessage && (
-                      <p
-                        className={`text-[11px] font-bold mt-2 ${
-                          promoMessage.success ? 'text-[#0E3B2F]' : 'text-[#FA7E70]'
-                        }`}
-                      >
-                        {promoMessage.text}
-                      </p>
-                    )}
-                  </div>
-                )}
+
               </>
             )}
 
@@ -473,10 +398,6 @@ export const CartDrawer: React.FC = () => {
                 <ArrowRight size={16} />
               </button>
 
-              <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] text-[#0D1F2D]/60">
-                <ShieldCheck size={14} className="text-[#0E3B2F]" />
-                <span>Encrypted 256-bit secure checkout</span>
-              </div>
             </div>
           )}
         </div>

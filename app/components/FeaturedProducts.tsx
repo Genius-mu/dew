@@ -148,7 +148,7 @@ export const FeaturedProducts: React.FC = () => {
         {/* 4 Pinned Cards Stage: Perfectly proportioned to never clip on laptops or mobiles */}
         <div
           ref={cardsContainerRef}
-          className="relative w-full max-w-3xl mx-auto h-[370px] sm:h-[400px] md:h-[420px] my-auto flex items-center justify-center shrink-0"
+          className="relative w-full max-w-2xl sm:max-w-3xl mx-auto h-[310px] sm:h-[335px] md:h-[355px] my-auto flex items-center justify-center shrink-0"
           style={{ perspective: 1200 }}
         >
           {products.map((prod, index) => {
@@ -156,12 +156,12 @@ export const FeaturedProducts: React.FC = () => {
             return (
               <div
                 key={prod.id}
-                className={`product-scroll-card absolute top-0 left-0 right-0 bottom-0 w-full h-full rounded-2xl sm:rounded-3xl glass-card p-4 sm:p-6 md:p-7 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 shadow-dew-deep border-2 border-white/90 transition-shadow ${
+                className={`product-scroll-card absolute top-0 left-0 right-0 bottom-0 w-full h-full rounded-2xl sm:rounded-3xl glass-card p-3.5 sm:p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-5 shadow-dew-deep border-2 border-white/90 transition-shadow ${
                   isInitial ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
                 }`}
               >
                 {/* Left: Product Image Stage with Glass Pedestal */}
-                <div className="relative w-full md:w-5/12 h-[150px] md:h-full rounded-xl sm:rounded-2xl glass-panel p-3 flex items-center justify-center overflow-hidden border border-white/80 shrink-0">
+                <div className="relative w-full md:w-5/12 h-[120px] md:h-full rounded-xl sm:rounded-2xl glass-panel p-2 flex items-center justify-center overflow-hidden border border-white/80 shrink-0">
                   <Image
                     src={prod.image}
                     alt={prod.name}
