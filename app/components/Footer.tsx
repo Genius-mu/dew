@@ -183,7 +183,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Legal Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#0D1F2D]/60 space-y-4 sm:space-y-0 font-medium">
-          <p>© {new Date().getFullYear()} Dew Skincare Laboratories Ltd. All rights reserved.</p>
+          <p>© 2026 Dew Skincare Laboratories Ltd. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <a href="#hero" className="hover:text-[#0E3B2F] transition-colors">Privacy Policy</a>
             <a href="#hero" className="hover:text-[#0E3B2F] transition-colors">Terms of Service</a>

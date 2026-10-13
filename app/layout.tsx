@@ -18,7 +18,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: 'Dew — Skincare for Your Everyday Ritual',
+  title: 'Dew | Skincare for Your Everyday Ritual',
   description:
     'Thoughtful botanical formulas. Everyday rituals. Skin that feels like you. Discover Dew Hydrate Serum, Daily Cream, and Glow Cleanser.',
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'gentle cleanser'
   ],
   openGraph: {
-    title: 'Dew — Skincare for Your Everyday Ritual',
+    title: 'Dew | Skincare for Your Everyday Ritual',
     description: 'Thoughtful botanical formulas. Everyday rituals. Skin that feels like you.',
     type: 'website',
     images: ['/images/serum.jpg'],
