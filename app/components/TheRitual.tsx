@@ -1,15 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { PRODUCTS } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { Check, ShoppingBag, Eye, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const TheRitual: React.FC = () => {
   const { addToCart, openQuickView } = useCart();
   const [activeStep, setActiveStep] = useState(1);
   const [bundleAdded, setBundleAdded] = useState(false);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsGridRef = useRef<HTMLDivElement>(null);
+  const bundleBannerRef = useRef<HTMLDivElement>(null);
 
   const steps = [
     {
@@ -46,14 +57,87 @@ export const TheRitual: React.FC = () => {
     setTimeout(() => setBundleAdded(false), 2000);
   };
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header slide in
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Staggered 3D tilt-up of step cards
+      gsap.fromTo(
+        '.ritual-step-card',
+        { opacity: 0, y: 70, rotateX: 18, scale: 0.92 },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          scale: 1,
+          stagger: 0.15,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardsGridRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Scroll parallax scrub on product images
+      gsap.to('.ritual-prod-img', {
+        y: -24,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      // Bundle banner scale & entrance
+      gsap.fromTo(
+        bundleBannerRef.current,
+        { opacity: 0, y: 50, scale: 0.94 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: 'back.out(1.2)',
+          scrollTrigger: {
+            trigger: bundleBannerRef.current,
+            start: 'top 85%',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="the-ritual"
-      className="relative w-full py-24 sm:py-32 overflow-hidden"
+      className="relative w-full py-24 sm:py-32 overflow-hidden perspective-1200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Glass Badge (NO icon) */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* Section Header with Glass Badge */}
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-block px-4 py-1 glass-badge rounded-full mb-3">
             <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F]">
               The Daily Protocol
@@ -75,7 +159,7 @@ export const TheRitual: React.FC = () => {
                 key={s.step}
                 type="button"
                 onClick={() => setActiveStep(s.step)}
-                className={`px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-150 ${
+                className={`px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
                   activeStep === s.step
                     ? 'bg-[#0E3B2F] text-[#FFFFFF] shadow-sm'
                     : 'text-[#0D1F2D]/75 hover:text-[#0D1F2D]'
@@ -87,15 +171,15 @@ export const TheRitual: React.FC = () => {
           </div>
         </div>
 
-        {/* Routine Cards on Glass Panels */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        {/* Routine Cards with 3D Slide In & Perspective */}
+        <div ref={cardsGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 preserve-3d">
           {steps.map((s) => {
             const isCurrent = activeStep === s.step;
             return (
               <div
                 key={s.step}
                 onClick={() => setActiveStep(s.step)}
-                className={`cursor-pointer rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between ${
+                className={`ritual-step-card cursor-pointer rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between preserve-3d ${
                   isCurrent
                     ? 'glass-card border-2 border-[#0E3B2F] shadow-dew-deep scale-102'
                     : 'glass-panel hover:bg-white/70 shadow-dew-subtle'
@@ -103,7 +187,6 @@ export const TheRitual: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    {/* Text badge with NO icon */}
                     <span className="px-3 py-1 bg-[#0E3B2F] text-[#FFFFFF] text-[10px] font-extrabold uppercase tracking-wider rounded-full">
                       Step 0{s.step}
                     </span>
@@ -118,7 +201,7 @@ export const TheRitual: React.FC = () => {
                       src={s.product.image}
                       alt={s.product.name}
                       fill
-                      className="object-contain p-2 drop-shadow-md"
+                      className="ritual-prod-img object-contain p-2 drop-shadow-md"
                       sizes="(max-width: 768px) 100vw, 30vw"
                     />
                     <button
@@ -127,7 +210,7 @@ export const TheRitual: React.FC = () => {
                         e.stopPropagation();
                         openQuickView(s.product);
                       }}
-                      className="absolute bottom-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm"
+                      className="absolute bottom-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm cursor-pointer"
                       aria-label={`Inspect ${s.product.name}`}
                     >
                       <Eye size={16} />
@@ -152,7 +235,7 @@ export const TheRitual: React.FC = () => {
                       e.stopPropagation();
                       addToCart(s.product);
                     }}
-                    className="text-xs font-extrabold uppercase tracking-wider text-[#0E3B2F] hover:text-[#0A2E24] flex items-center space-x-1"
+                    className="text-xs font-extrabold uppercase tracking-wider text-[#0E3B2F] hover:text-[#0A2E24] flex items-center space-x-1 cursor-pointer"
                   >
                     <span>Add Step 0{s.step}</span>
                     <ArrowRight size={14} />
@@ -167,7 +250,10 @@ export const TheRitual: React.FC = () => {
         </div>
 
         {/* Bundle Banner CTA: "Build your routine" with Glassmorphism */}
-        <div className="glass-dark text-[#FFFFFF] rounded-3xl p-8 sm:p-10 shadow-dew-deep flex flex-col md:flex-row items-center justify-between gap-6">
+        <div
+          ref={bundleBannerRef}
+          className="glass-dark text-[#FFFFFF] rounded-3xl p-8 sm:p-10 shadow-dew-deep flex flex-col md:flex-row items-center justify-between gap-6 preserve-3d"
+        >
           <div className="max-w-xl text-center md:text-left">
             <span className="inline-block px-3 py-1 glass-badge text-[#0E3B2F] text-[10px] font-extrabold uppercase tracking-wider rounded-full mb-2">
               Save ₦5,000 Today
@@ -193,7 +279,7 @@ export const TheRitual: React.FC = () => {
             <button
               type="button"
               onClick={handleAddBundle}
-              className="px-8 py-3.5 bg-[#FFFFFF] hover:bg-[#FDE89D] text-[#0E3B2F] text-xs font-extrabold uppercase tracking-wider rounded-full active:scale-95 transition-all shadow-dew-card flex items-center space-x-2 hover-scale-pill"
+              className="px-8 py-3.5 bg-[#FFFFFF] hover:bg-[#FDE89D] text-[#0E3B2F] text-xs font-extrabold uppercase tracking-wider rounded-full active:scale-95 transition-all shadow-dew-card flex items-center space-x-2 hover-scale-pill cursor-pointer"
             >
               {bundleAdded ? (
                 <>

@@ -196,6 +196,23 @@ body {
   background: #3B9DF8; /* Vibrant Sky Blue on hover */
 }
 
+/* 3D Parallax & Spatial Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1200 {
+  perspective: 1200px;
+}
+.perspective-1500 {
+  perspective: 1500px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
 /* Animation utilities */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -205,3 +222,4 @@ body {
     scroll-behavior: auto !important;
   }
 }
+

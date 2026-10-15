@@ -1,22 +1,106 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { INGREDIENTS } from '../data/products';
 import { ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const IngredientStory: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const currentIngredient = INGREDIENTS[activeIndex];
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const photoCardRef = useRef<HTMLDivElement>(null);
+  const copyCardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header slide in
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Left photo card 3D slide in
+      gsap.fromTo(
+        photoCardRef.current,
+        { opacity: 0, x: -70, rotateY: -12, scale: 0.94 },
+        {
+          opacity: 1,
+          x: 0,
+          rotateY: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: photoCardRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Right editorial card 3D slide in
+      gsap.fromTo(
+        copyCardRef.current,
+        { opacity: 0, x: 70, rotateY: 12, scale: 0.94 },
+        {
+          opacity: 1,
+          x: 0,
+          rotateY: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: copyCardRef.current,
+            start: 'top 80%',
+          },
+        }
+      );
+
+      // Parallax float on image
+      gsap.to('.ingredient-parallax-img', {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="ingredients"
-      className="relative w-full py-24 sm:py-32 overflow-hidden"
+      className="relative w-full py-24 sm:py-32 overflow-hidden perspective-1200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Block with Glass Badge (NO icon) */}
-        <div className="max-w-3xl mb-14">
+        {/* Header Block with Glass Badge */}
+        <div ref={headerRef} className="max-w-3xl mb-14">
           <div className="inline-block px-4 py-1 glass-badge rounded-full mb-3">
             <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F]">
               Formulation Philosophy
@@ -37,7 +121,7 @@ export const IngredientStory: React.FC = () => {
               key={ing.id}
               type="button"
               onClick={() => setActiveIndex(idx)}
-              className={`px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-150 ${
+              className={`px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
                 activeIndex === idx
                   ? 'bg-[#0E3B2F] text-[#FFFFFF] shadow-sm'
                   : 'glass-pill text-[#0D1F2D] hover:bg-white/90'
@@ -48,23 +132,23 @@ export const IngredientStory: React.FC = () => {
           ))}
         </div>
 
-        {/* Main Stage: Glassmorphic 2-Column Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Main Stage: Glassmorphic 2-Column Showcase with 3D Slide In */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center preserve-3d">
           {/* Left Column: Oversized Tactile Ingredient Photography */}
-          <div className="lg:col-span-7 relative">
+          <div ref={photoCardRef} className="lg:col-span-7 relative preserve-3d">
             <div className="relative aspect-[4/3] sm:aspect-[16/10] glass-card rounded-3xl overflow-hidden p-3 shadow-dew-deep border-2 border-white/90">
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
                   src={currentIngredient.image}
                   alt={currentIngredient.title}
                   fill
-                  className="object-cover transition-all duration-500 ease-out"
+                  className="ingredient-parallax-img object-cover transition-all duration-500 ease-out"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   priority
                 />
               </div>
 
-              {/* Text-only Badge with NO icon */}
+              {/* Text-only Badge */}
               <div className="absolute top-6 left-6 px-3.5 py-1 glass-badge rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
                 {currentIngredient.badge}
               </div>
@@ -77,7 +161,7 @@ export const IngredientStory: React.FC = () => {
                   key={ing.id}
                   type="button"
                   onClick={() => setActiveIndex(idx)}
-                  className={`relative aspect-[16/10] rounded-xl overflow-hidden border-2 transition-all p-1 glass-panel ${
+                  className={`relative aspect-[16/10] rounded-xl overflow-hidden border-2 transition-all p-1 glass-panel cursor-pointer ${
                     activeIndex === idx
                       ? 'border-[#0E3B2F] ring-2 ring-[#0E3B2F]/20'
                       : 'border-transparent opacity-70 hover:opacity-100'
@@ -99,7 +183,10 @@ export const IngredientStory: React.FC = () => {
           </div>
 
           {/* Right Column: Glass Editorial Copy & Pairing Note */}
-          <div className="lg:col-span-5 glass-card rounded-3xl p-8 sm:p-10 shadow-dew-card border border-white/90">
+          <div
+            ref={copyCardRef}
+            className="lg:col-span-5 glass-card rounded-3xl p-8 sm:p-10 shadow-dew-card border border-white/90 preserve-3d"
+          >
             <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F] block mb-2">
               Ingredient 0{activeIndex + 1} of 03
             </span>
@@ -138,7 +225,7 @@ export const IngredientStory: React.FC = () => {
                 onClick={() =>
                   setActiveIndex((prev) => (prev + 1) % INGREDIENTS.length)
                 }
-                className="inline-flex items-center space-x-2 text-xs font-extrabold uppercase tracking-wider text-[#0E3B2F] hover:text-[#0A2E24] group"
+                className="inline-flex items-center space-x-2 text-xs font-extrabold uppercase tracking-wider text-[#0E3B2F] hover:text-[#0A2E24] group cursor-pointer"
               >
                 <span>Next Ingredient</span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
