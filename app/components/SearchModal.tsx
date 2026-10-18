@@ -33,9 +33,9 @@ export const SearchModal: React.FC = () => {
       />
 
       <div className="flex min-h-full items-start justify-center p-4 sm:p-6 text-center pt-16 sm:pt-24">
-        <div className="relative transform overflow-hidden rounded-3xl bg-white/95 backdrop-blur-2xl text-left shadow-dew-deep transition-all w-full max-w-2xl border-2 border-white/90">
+        <div className="relative transform overflow-hidden rounded-3xl glass-card text-left shadow-dew-deep transition-all w-full max-w-2xl border-2 border-white/95">
           {/* Header Input */}
-          <div className="p-4 sm:p-6 border-b border-white/60 flex items-center space-x-3 bg-white/60">
+          <div className="p-4 sm:p-6 border-b border-white/60 flex items-center space-x-3 bg-white/40 relative z-10">
             <Search size={22} className="text-[#0E3B2F] shrink-0" />
             <input
               type="text"
@@ -49,7 +49,7 @@ export const SearchModal: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="p-1 text-[#0D1F2D]/50 hover:text-[#0D1F2D]"
+                className="p-1 text-[#0D1F2D]/50 hover:text-[#0D1F2D] cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -57,7 +57,7 @@ export const SearchModal: React.FC = () => {
             <button
               type="button"
               onClick={closeSearch}
-              className="p-1.5 bg-[#FFFFFF] text-[#0D1F2D] hover:bg-[#FFFFFF]/80 rounded-full shadow-dew-subtle"
+              className="p-1.5 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm cursor-pointer"
               aria-label="Close search"
             >
               <X size={18} />
@@ -65,14 +65,14 @@ export const SearchModal: React.FC = () => {
           </div>
 
           {/* Quick Filter Tags */}
-          <div className="px-6 py-3 bg-[#FFFFFF] border-b border-[#0D1F2D]/5 flex flex-wrap gap-2 text-xs">
-            <span className="text-[#0D1F2D]/60 font-medium py-1">Popular:</span>
+          <div className="px-6 py-3 border-b border-white/40 flex flex-wrap gap-2 text-xs bg-white/30 relative z-10">
+            <span className="text-[#0D1F2D]/70 font-bold py-1">Popular:</span>
             {['Hydrate Serum', 'Aloe', 'Daily Cream', 'Cleanser', 'Ritual'].map((term) => (
               <button
                 key={term}
                 type="button"
                 onClick={() => setQuery(term)}
-                className="px-2.5 py-1 bg-[#E3F2F7] hover:bg-[#FDF1C8] text-[#0E3B2F] font-bold rounded transition-colors text-[11px]"
+                className="px-2.5 py-1 glass-badge text-[#0E3B2F] font-bold rounded-full transition-colors text-[11px] cursor-pointer hover:bg-white/80"
               >
                 {term}
               </button>
@@ -80,7 +80,7 @@ export const SearchModal: React.FC = () => {
           </div>
 
           {/* Results List */}
-          <div className="p-4 sm:p-6 max-h-[60vh] overflow-y-auto space-y-3">
+          <div className="p-4 sm:p-6 max-h-[60vh] overflow-y-auto space-y-3 relative z-10">
             {results.length === 0 ? (
               <div className="text-center py-10">
                 <p className="text-sm font-bold text-[#0D1F2D]">No products found for “{query}”</p>
@@ -94,15 +94,15 @@ export const SearchModal: React.FC = () => {
                     closeSearch();
                     openQuickView(product);
                   }}
-                  className="flex items-center justify-between p-3 rounded-xl border border-[#0D1F2D]/10 hover:border-[#0E3B2F] hover:bg-[#E3F2F7]/50 cursor-pointer transition-all"
+                  className="flex items-center justify-between p-3 rounded-2xl glass-panel border border-white/80 hover:bg-white/80 cursor-pointer transition-all"
                 >
                   <div className="flex items-center space-x-3.5 min-w-0">
-                    <div className="relative w-14 h-16 bg-[#E3F2F7] rounded-lg overflow-hidden shrink-0 p-1">
+                    <div className="relative w-14 h-16 rounded-xl overflow-hidden shrink-0 p-1 border border-white/60">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-contain"
+                        className="object-contain mix-blend-multiply"
                         sizes="60px"
                       />
                     </div>
