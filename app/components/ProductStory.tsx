@@ -175,7 +175,7 @@ export const ProductStory: React.FC = () => {
                 src="/images/serum.jpg"
                 alt="Dew Hydrate Serum - Front View"
                 fill
-                className="object-contain drop-shadow-md"
+                className="object-contain drop-shadow-md mix-blend-multiply"
                 sizes="(max-width: 768px) 220px, 280px"
               />
             </div>
@@ -191,7 +191,7 @@ export const ProductStory: React.FC = () => {
                 src="/images/serum-angle.jpg"
                 alt="Dew Hydrate Serum - 3/4 Angle Detail"
                 fill
-                className="object-contain drop-shadow-md"
+                className="object-contain drop-shadow-md mix-blend-multiply"
                 sizes="(max-width: 768px) 220px, 280px"
               />
             </div>
@@ -202,15 +202,17 @@ export const ProductStory: React.FC = () => {
             ref={callout1Ref}
             className="absolute left-4 sm:left-12 md:left-20 top-1/4 z-30 max-w-[210px] sm:max-w-[240px] glass-panel p-4 rounded-2xl shadow-dew-card border border-white/80 preserve-3d"
           >
-            <span className="inline-block px-2 py-0.5 glass-badge rounded text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] mb-1.5">
-              Multi-Depth
-            </span>
-            <h4 className="text-sm sm:text-base font-extrabold text-[#0D1F2D] mb-1">
-              Hydration that lasts.
-            </h4>
-            <p className="text-[11px] sm:text-xs text-[#0D1F2D]/75 leading-relaxed">
-              Multi-weight botanical humectants anchor moisture within the epidermal layers for sustained comfort.
-            </p>
+            <div className="relative z-10">
+              <span className="inline-block px-2 py-0.5 glass-badge rounded text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] mb-1.5">
+                Multi-Depth
+              </span>
+              <h4 className="text-sm sm:text-base font-extrabold text-[#0D1F2D] mb-1">
+                Hydration that lasts.
+              </h4>
+              <p className="text-[11px] sm:text-xs text-[#0D1F2D]/75 leading-relaxed">
+                Multi-weight botanical humectants anchor moisture within the epidermal layers for sustained comfort.
+              </p>
+            </div>
           </div>
 
           {/* Story Callout 2 (Right): Fast-Absorbing Weightless Feel */}
@@ -218,15 +220,17 @@ export const ProductStory: React.FC = () => {
             ref={callout2Ref}
             className="absolute right-4 sm:right-12 md:right-20 top-1/4 z-30 max-w-[210px] sm:max-w-[240px] glass-panel p-4 rounded-2xl shadow-dew-card border border-white/80 preserve-3d"
           >
-            <span className="inline-block px-2 py-0.5 glass-badge rounded text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] mb-1.5">
-              Fast-Absorbing
-            </span>
-            <h4 className="text-sm sm:text-base font-extrabold text-[#0D1F2D] mb-1">
-              Weightless feel.
-            </h4>
-            <p className="text-[11px] sm:text-xs text-[#0D1F2D]/75 leading-relaxed">
-              Fast-absorbing liquid essence that absorbs in seconds, leaving zero stickiness in warm or humid climates.
-            </p>
+            <div className="relative z-10">
+              <span className="inline-block px-2 py-0.5 glass-badge rounded text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] mb-1.5">
+                Fast-Absorbing
+              </span>
+              <h4 className="text-sm sm:text-base font-extrabold text-[#0D1F2D] mb-1">
+                Weightless feel.
+              </h4>
+              <p className="text-[11px] sm:text-xs text-[#0D1F2D]/75 leading-relaxed">
+                Fast-absorbing liquid essence that absorbs in seconds, leaving zero stickiness in warm or humid climates.
+              </p>
+            </div>
           </div>
 
           {/* Story Callout 3 (Bottom): Clinical Efficacy & Daily Ritual */}
@@ -234,20 +238,22 @@ export const ProductStory: React.FC = () => {
             ref={callout3Ref}
             className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-30 max-w-[280px] sm:max-w-[340px] w-full glass-panel p-3.5 sm:p-4 rounded-2xl shadow-dew-card border border-white/80 text-center preserve-3d"
           >
-            <div className="flex items-center justify-center space-x-1.5 mb-1.5">
-              <Droplets size={13} className="text-[#0E3B2F]" />
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
-                Clinical Performance
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              <div className="p-1.5 glass-pill rounded-xl text-center">
-                <span className="text-base sm:text-lg font-black text-[#0E3B2F] block">98%</span>
-                <span className="text-[9px] text-[#0D1F2D]/70 font-bold">Barrier Support</span>
+            <div className="relative z-10">
+              <div className="flex items-center justify-center space-x-1.5 mb-1.5">
+                <Droplets size={13} className="text-[#0E3B2F]" />
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
+                  Clinical Performance
+                </span>
               </div>
-              <div className="p-1.5 glass-pill rounded-xl text-center">
-                <span className="text-base sm:text-lg font-black text-[#0E3B2F] block">24H</span>
-                <span className="text-[9px] text-[#0D1F2D]/70 font-bold">Deep Hydration</span>
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <div className="p-1.5 glass-pill rounded-xl text-center">
+                  <span className="text-base sm:text-lg font-black text-[#0E3B2F] block">98%</span>
+                  <span className="text-[9px] text-[#0D1F2D]/70 font-bold">Barrier Support</span>
+                </div>
+                <div className="p-1.5 glass-pill rounded-xl text-center">
+                  <span className="text-base sm:text-lg font-black text-[#0E3B2F] block">24H</span>
+                  <span className="text-[9px] text-[#0D1F2D]/70 font-bold">Deep Hydration</span>
+                </div>
               </div>
             </div>
           </div>

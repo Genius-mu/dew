@@ -74,18 +74,18 @@ export const FeaturedProducts: React.FC = () => {
 
       // Transition from Card 0 to Card 1
       tl.to(cards[0], {
-        opacity: 0,
-        x: -120,
-        scale: 0.88,
-        rotateY: -16,
+        autoAlpha: 0,
+        xPercent: -70,
+        scale: 0.86,
+        rotateY: -15,
         pointerEvents: 'none',
         duration: 1,
-        ease: 'power1.inOut',
+        ease: 'power2.inOut',
       })
       .fromTo(
         cards[1],
-        { opacity: 0, x: 120, scale: 0.88, rotateY: 16, pointerEvents: 'none' },
-        { opacity: 1, x: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power1.inOut' },
+        { autoAlpha: 0, xPercent: 70, scale: 0.86, rotateY: 15, pointerEvents: 'none' },
+        { autoAlpha: 1, xPercent: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
         '<'
       );
 
@@ -94,18 +94,18 @@ export const FeaturedProducts: React.FC = () => {
 
       // Transition from Card 1 to Card 2
       tl.to(cards[1], {
-        opacity: 0,
-        x: -120,
-        scale: 0.88,
-        rotateY: -16,
+        autoAlpha: 0,
+        xPercent: -70,
+        scale: 0.86,
+        rotateY: -15,
         pointerEvents: 'none',
         duration: 1,
-        ease: 'power1.inOut',
+        ease: 'power2.inOut',
       })
       .fromTo(
         cards[2],
-        { opacity: 0, x: 120, scale: 0.88, rotateY: 16, pointerEvents: 'none' },
-        { opacity: 1, x: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power1.inOut' },
+        { autoAlpha: 0, xPercent: 70, scale: 0.86, rotateY: 15, pointerEvents: 'none' },
+        { autoAlpha: 1, xPercent: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
         '<'
       );
 
@@ -114,18 +114,18 @@ export const FeaturedProducts: React.FC = () => {
 
       // Transition from Card 2 to Card 3
       tl.to(cards[2], {
-        opacity: 0,
-        x: -120,
-        scale: 0.88,
-        rotateY: -16,
+        autoAlpha: 0,
+        xPercent: -70,
+        scale: 0.86,
+        rotateY: -15,
         pointerEvents: 'none',
         duration: 1,
-        ease: 'power1.inOut',
+        ease: 'power2.inOut',
       })
       .fromTo(
         cards[3],
-        { opacity: 0, x: 120, scale: 0.88, rotateY: 16, pointerEvents: 'none' },
-        { opacity: 1, x: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power1.inOut' },
+        { autoAlpha: 0, xPercent: 70, scale: 0.86, rotateY: 15, pointerEvents: 'none' },
+        { autoAlpha: 1, xPercent: 0, scale: 1, rotateY: 0, pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
         '<'
       );
 
@@ -195,18 +195,18 @@ export const FeaturedProducts: React.FC = () => {
                     src={prod.image}
                     alt={prod.name}
                     fill
-                    className="object-contain p-2 drop-shadow-md"
+                    className="object-contain p-2 drop-shadow-md mix-blend-multiply"
                     sizes="(max-width: 768px) 100vw, 340px"
                     priority={isInitial}
                   />
                   {/* Badge */}
-                  <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 glass-badge rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
+                  <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 glass-badge rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] z-10">
                     0{index + 1} · {prod.category}
                   </div>
                   <button
                     type="button"
                     onClick={() => openQuickView(prod)}
-                    className="absolute top-2.5 right-2.5 p-1.5 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm hover-scale-pill cursor-pointer"
+                    className="absolute top-2.5 right-2.5 p-1.5 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm hover-scale-pill cursor-pointer z-10"
                     aria-label={`Quick view ${prod.name}`}
                   >
                     <Eye size={15} />
@@ -214,7 +214,7 @@ export const FeaturedProducts: React.FC = () => {
                 </div>
 
                 {/* Right: Editorial Details */}
-                <div className="w-full md:w-7/12 flex flex-col justify-between h-full text-left py-0.5">
+                <div className="w-full md:w-7/12 flex flex-col justify-between h-full text-left py-0.5 relative z-10">
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
