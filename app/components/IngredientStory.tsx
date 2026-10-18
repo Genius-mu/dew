@@ -124,7 +124,7 @@ export const IngredientStory: React.FC = () => {
               className={`px-5 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
                 activeIndex === idx
                   ? 'bg-[#0E3B2F] text-[#FFFFFF] shadow-sm'
-                  : 'glass-pill text-[#0D1F2D] hover:bg-white/90'
+                  : 'glass-pill text-[#0D1F2D] hover:bg-white/60'
               }`}
             >
               0{idx + 1}. {ing.title.split(' ')[0]}
@@ -149,7 +149,7 @@ export const IngredientStory: React.FC = () => {
               </div>
 
               {/* Text-only Badge */}
-              <div className="absolute top-6 left-6 px-3.5 py-1 glass-badge rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F]">
+              <div className="absolute top-6 left-6 px-3.5 py-1 glass-badge rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#0E3B2F] z-10">
                 {currentIngredient.badge}
               </div>
             </div>
@@ -187,7 +187,8 @@ export const IngredientStory: React.FC = () => {
             ref={copyCardRef}
             className="lg:col-span-5 glass-card rounded-3xl p-8 sm:p-10 shadow-dew-card border border-white/90 preserve-3d"
           >
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F] block mb-2">
+            <div className="relative z-10">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0E3B2F] block mb-2">
               Ingredient 0{activeIndex + 1} of 03
             </span>
             <h3 className="text-3xl sm:text-4xl font-extrabold text-[#0D1F2D] mb-2 leading-tight">
