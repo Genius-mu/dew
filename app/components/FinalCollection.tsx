@@ -178,11 +178,11 @@ export const FinalCollection: React.FC = () => {
                     src={p.image}
                     alt={p.name}
                     fill
-                    className="final-prod-img object-contain p-2 group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+                    className="final-prod-img object-contain p-2 group-hover:scale-105 transition-transform duration-300 drop-shadow-md mix-blend-multiply"
                     sizes="(max-width: 640px) 50vw, 25vw"
                   />
                 </div>
-                <div>
+                <div className="relative z-10">
                   <h4 className="text-xs sm:text-sm font-extrabold text-[#0D1F2D] truncate">
                     {p.name}
                   </h4>

@@ -30,29 +30,29 @@ export const QuickViewModal: React.FC = () => {
       />
 
       <div className="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
-        <div className="relative transform overflow-hidden rounded-3xl bg-white/95 backdrop-blur-2xl text-left shadow-dew-deep transition-all sm:my-8 w-full max-w-3xl border-2 border-white/90">
+        <div className="relative transform overflow-hidden rounded-3xl glass-card text-left shadow-dew-deep transition-all sm:my-8 w-full max-w-3xl border-2 border-white/95">
           {/* Close button */}
           <button
             type="button"
             onClick={closeQuickView}
-            className="absolute top-4 right-4 z-10 p-2 text-[#0D1F2D]/60 hover:text-[#0D1F2D] hover:bg-[#E3F2F7] rounded-full transition-colors"
+            className="absolute top-4 right-4 z-20 p-2 text-[#0D1F2D]/60 hover:text-[#0D1F2D] hover:bg-white/60 rounded-full transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={20} />
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 sm:p-8 items-center relative z-10">
             {/* Left: Product Image Stage */}
             <div className="md:col-span-5">
               <div
-                className="relative aspect-[3/4] rounded-xl overflow-hidden p-4 flex items-center justify-center"
+                className="relative aspect-[3/4] rounded-2xl overflow-hidden p-4 flex items-center justify-center glass-panel"
                 style={{ backgroundColor: quickViewProduct.accentColor }}
               >
                 <Image
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
                   fill
-                  className="object-contain p-2"
+                  className="object-contain p-2 mix-blend-multiply"
                   sizes="(max-width: 768px) 100vw, 350px"
                   priority
                 />
