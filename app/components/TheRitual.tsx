@@ -182,10 +182,10 @@ export const TheRitual: React.FC = () => {
                 className={`ritual-step-card cursor-pointer rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between preserve-3d ${
                   isCurrent
                     ? 'glass-card border-2 border-[#0E3B2F] shadow-dew-deep scale-102'
-                    : 'glass-panel hover:bg-white/70 shadow-dew-subtle'
+                    : 'glass-panel shadow-dew-subtle'
                 }`}
               >
-                <div>
+                <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <span className="px-3 py-1 bg-[#0E3B2F] text-[#FFFFFF] text-[10px] font-extrabold uppercase tracking-wider rounded-full">
                       Step 0{s.step}
@@ -201,7 +201,7 @@ export const TheRitual: React.FC = () => {
                       src={s.product.image}
                       alt={s.product.name}
                       fill
-                      className="ritual-prod-img object-contain p-2 drop-shadow-md"
+                      className="ritual-prod-img object-contain p-2 drop-shadow-md mix-blend-multiply"
                       sizes="(max-width: 768px) 100vw, 30vw"
                     />
                     <button
@@ -210,7 +210,7 @@ export const TheRitual: React.FC = () => {
                         e.stopPropagation();
                         openQuickView(s.product);
                       }}
-                      className="absolute bottom-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm cursor-pointer"
+                      className="absolute bottom-3 right-3 p-2 glass-pill text-[#0D1F2D] hover:text-[#0E3B2F] rounded-full shadow-sm cursor-pointer z-10"
                       aria-label={`Inspect ${s.product.name}`}
                     >
                       <Eye size={16} />
@@ -228,7 +228,7 @@ export const TheRitual: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-white/60 flex items-center justify-between">
+                <div className="pt-4 mt-6 border-t border-white/60 flex items-center justify-between relative z-10">
                   <button
                     type="button"
                     onClick={(e) => {
