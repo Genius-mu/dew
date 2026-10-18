@@ -52,23 +52,23 @@ export const CartDrawer: React.FC = () => {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white/90 backdrop-blur-2xl shadow-dew-deep flex flex-col justify-between border-l border-white/80">
+        <div className="w-screen max-w-md glass-drawer shadow-dew-deep flex flex-col justify-between border-l border-white/95">
           {/* Header */}
-          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/50">
+          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/40 relative z-10">
             <div className="flex items-center space-x-2">
               <ShoppingBag size={20} className="text-[#0E3B2F]" />
               <h2 className="text-base font-extrabold uppercase tracking-wider text-[#0D1F2D]">
                 {checkoutStep === 'cart'
                   ? `Your Bag (${totalItems})`
                   : checkoutStep === 'checkout'
-                  ? 'Express Checkout'
+                  : 'Express Checkout'
                   : 'Ritual Confirmed'}
               </h2>
             </div>
             <button
               type="button"
               onClick={closeCart}
-              className="p-1.5 text-[#0D1F2D]/70 hover:text-[#0D1F2D] hover:bg-[#E3F2F7] rounded-full transition-colors"
+              className="p-1.5 text-[#0D1F2D]/70 hover:text-[#0D1F2D] hover:bg-white/60 rounded-full transition-colors cursor-pointer"
               aria-label="Close cart"
             >
               <X size={20} />
@@ -76,7 +76,7 @@ export const CartDrawer: React.FC = () => {
           </div>
 
           {/* Body Content */}
-          <div className="flex-1 overflow-y-auto px-6 py-6">
+          <div className="flex-1 overflow-y-auto px-6 py-6 relative z-10">
             {checkoutStep === 'cart' && (
               <>
 
@@ -84,7 +84,7 @@ export const CartDrawer: React.FC = () => {
                 {/* Items List */}
                 {items.length === 0 ? (
                   <div className="text-center py-16">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-[#E3F2F7] rounded-full flex items-center justify-center text-[#0E3B2F]">
+                    <div className="w-16 h-16 mx-auto mb-4 glass-panel rounded-full flex items-center justify-center text-[#0E3B2F]">
                       <ShoppingBag size={28} />
                     </div>
                     <h3 className="text-lg font-bold text-[#0D1F2D] mb-2">
@@ -96,7 +96,7 @@ export const CartDrawer: React.FC = () => {
                     <button
                       type="button"
                       onClick={closeCart}
-                      className="px-6 py-3 bg-[#0E3B2F] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-sm hover:bg-[#0A2E24]"
+                      className="px-6 py-3 bg-[#0E3B2F] text-[#FFFFFF] text-xs font-extrabold uppercase tracking-wider rounded-full hover:bg-[#0A2E24] cursor-pointer"
                     >
                       Start Shopping
                     </button>
@@ -106,15 +106,15 @@ export const CartDrawer: React.FC = () => {
                     {items.map(({ product, quantity }) => (
                       <div
                         key={product.id}
-                        className="flex items-center space-x-4 p-3 bg-[#FFFFFF] rounded-xl border border-[#0D1F2D]/10 shadow-dew-subtle"
+                        className="flex items-center space-x-4 p-3 glass-panel rounded-2xl border border-white/80 shadow-dew-subtle"
                       >
                         {/* Thumbnail */}
-                        <div className="relative w-16 h-20 bg-[#E3F2F7] rounded-lg overflow-hidden shrink-0 p-1">
+                        <div className="relative w-16 h-20 rounded-xl overflow-hidden shrink-0 p-1 border border-white/60">
                           <Image
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-contain"
+                            className="object-contain mix-blend-multiply"
                             sizes="80px"
                           />
                         </div>
