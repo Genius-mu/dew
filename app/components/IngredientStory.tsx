@@ -235,6 +235,7 @@ export const IngredientStory: React.FC = () => {
                 0{activeIndex + 1} / 03
               </span>
             </div>
+            </div>
           </div>
         </div>
       </div>
