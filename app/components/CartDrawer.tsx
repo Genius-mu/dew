@@ -61,7 +61,7 @@ export const CartDrawer: React.FC = () => {
                 {checkoutStep === 'cart'
                   ? `Your Bag (${totalItems})`
                   : checkoutStep === 'checkout'
-                  : 'Express Checkout'
+                  ? 'Express Checkout'
                   : 'Ritual Confirmed'}
               </h2>
             </div>
