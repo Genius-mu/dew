@@ -42,12 +42,12 @@ export const Navbar: React.FC = () => {
         <div
           className={`pointer-events-auto w-full max-w-4xl rounded-full glass-pill transition-all duration-300 px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between ${
             scrolled
-              ? 'shadow-dew-deep bg-white/80 border-white/95'
-              : 'shadow-dew-card bg-white/65 border-white/80'
+              ? 'shadow-dew-deep ring-1 ring-white/90 scale-[0.99]'
+              : 'shadow-dew-card'
           }`}
         >
           {/* Left: Standalone Dew SVG emblem without any text or wordmark */}
-          <div className="flex items-center">
+          <div className="flex items-center relative z-10">
             <Link
               href="/"
               aria-label="Dew Skincare Home"
@@ -62,7 +62,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Center: Desktop Nav Links (Supaste-style pill links) */}
-          <nav className="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center space-x-1 relative z-10" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -71,7 +71,7 @@ export const Navbar: React.FC = () => {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#0D1F2D]/85 hover:text-[#0E3B2F] hover:bg-white/80 transition-all duration-150"
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#0D1F2D]/85 hover:text-[#0E3B2F] hover:bg-white/60 transition-all duration-150"
               >
                 {link.label}
               </a>
@@ -79,9 +79,9 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Right: Currency, Search, Shopping Bag */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3 relative z-10">
             {/* Currency Pill */}
-            <span className="hidden sm:inline-block px-2.5 py-1 bg-white/70 border border-white/80 rounded-full text-[11px] font-extrabold tracking-wider text-[#0E3B2F]">
+            <span className="hidden sm:inline-block px-2.5 py-1 glass-badge rounded-full text-[11px] font-extrabold tracking-wider text-[#0E3B2F]">
               ₦ NGN
             </span>
 
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
               type="button"
               onClick={openSearch}
               aria-label="Search products and rituals"
-              className="p-2 text-[#0D1F2D] hover:text-[#0E3B2F] hover:bg-white/80 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#0E3B2F]"
+              className="p-2 text-[#0D1F2D] hover:text-[#0E3B2F] hover:bg-white/60 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#0E3B2F]"
             >
               <Search size={17} strokeWidth={2.4} />
             </button>
@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
               type="button"
               onClick={openCart}
               aria-label={`Shopping bag with ${totalItems} items`}
-              className="relative p-2 text-[#0D1F2D] hover:text-[#0E3B2F] hover:bg-white/80 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#0E3B2F]"
+              className="relative p-2 text-[#0D1F2D] hover:text-[#0E3B2F] hover:bg-white/60 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#0E3B2F]"
             >
               <ShoppingBag size={19} strokeWidth={2.4} />
               {totalItems > 0 && (
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              className="md:hidden p-2 text-[#0D1F2D] hover:bg-white/80 rounded-full focus:outline-none"
+              className="md:hidden p-2 text-[#0D1F2D] hover:bg-white/60 rounded-full focus:outline-none"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
