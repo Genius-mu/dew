@@ -200,7 +200,7 @@ export const Hero: React.FC = () => {
                   alt="Dew Daily Cream Jar"
                   fill
                   priority
-                  className="object-contain p-2"
+                  className="object-contain p-2 mix-blend-multiply"
                   sizes="(max-width: 768px) 140px, 180px"
                 />
               </div>
@@ -225,7 +225,7 @@ export const Hero: React.FC = () => {
                   alt="Dew Cloud Mist Spray"
                   fill
                   priority
-                  className="object-contain p-2"
+                  className="object-contain p-2 mix-blend-multiply"
                   sizes="(max-width: 768px) 130px, 165px"
                 />
               </div>
@@ -251,7 +251,7 @@ export const Hero: React.FC = () => {
                   alt="Dew Hydrate Serum - Signature Hero"
                   fill
                   priority
-                  className="object-contain p-2"
+                  className="object-contain p-2 mix-blend-multiply"
                   sizes="(max-width: 768px) 180px, 220px"
                 />
               </div>
